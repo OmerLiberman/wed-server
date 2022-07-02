@@ -5,6 +5,7 @@ const Attender = require('../models/attender');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
+    console.log('clientIp', req.ip , req.socket.remoteAddress);
     const {name, phone, status, attendies, recognized} = req.body;
     if (!name || !phone || !status) {
         res.status(500);
@@ -18,10 +19,10 @@ router.post('/', async (req, res) => {
             recognized,
         });
         await attendy.save();
+        res.status(200).send(attendy._id);
     } catch (err) {
         res.status(400).json(err);
     }
-    res.status(200).send('added successfully');
 });
 
 router.get('/:id', async (req, res) => {

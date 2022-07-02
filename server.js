@@ -36,5 +36,5 @@ app.listen(PORT);
 console.log(`App is listening to port ${PORT}.`);
 
 app.get('/', (req, res, next) => {
-  return res.status(200).json({message: 'Hello my friend!'});
+  return res.status(200).json({message: 'Fuck Hazrati!'});
 });
